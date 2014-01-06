@@ -22,11 +22,11 @@
 
     <!-- Windows Phone 8 -->
     <platform name="wp8">
-<!--         <config-file target="config.xml" parent="/*">
-            <feature name="Media">
-                <param name="wp-package" value="Media"/>
+        <config-file target="config.xml" parent="/*">
+            <feature name="PushNotificationPlugin">
+                <param name="wp-package" value="PushNotificationPlugin"/>
             </feature>
-        </config-file> -->
+        </config-file>
 
         <source-file src="src/PushNotificationPlugin.cs" />
     </platform>
