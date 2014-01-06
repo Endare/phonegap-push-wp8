@@ -27,5 +27,9 @@
         </config-file>
 
         <source-file src="src/PushNotificationPlugin.cs" />
+
+        <js-module src="www/WPPush.js" name="WPPush">
+            <clobbers target="WPPush" />
+        </js-module>
     </platform>
 </plugin>
