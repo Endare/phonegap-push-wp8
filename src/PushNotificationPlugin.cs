@@ -2,7 +2,7 @@ using WPCordovaClassLib.Cordova;
 using WPCordovaClassLib.Cordova.Commands;
 using WPCordovaClassLib.Cordova.JSON;
 
-namespace Cordova.Extension.Commands
+namespace eu.endare.phonegap
 {
     public class PushNotificationPlugin : BaseCommand
     {
