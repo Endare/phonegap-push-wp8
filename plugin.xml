@@ -23,7 +23,7 @@
     <!-- Windows Phone 8 -->
     <platform name="wp8">
         <config-file target="config.xml" parent="/*">
-            <feature name="PushNotificationPlugin">
+            <feature name="WPPush">
                 <param name="wp-package" value="PushNotificationPlugin"/>
             </feature>
         </config-file>
