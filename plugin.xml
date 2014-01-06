@@ -15,7 +15,7 @@
     <platform name="wp8">
         <config-file target="config.xml" parent="/*">
             <feature name="WPPush">
-                <param name="wp-package" value="eu.endare.phonegap.PushNotificationPlugin"/>
+                <param name="wp-package" value="PushNotificationPlugin"/>
             </feature>
         </config-file>
 
