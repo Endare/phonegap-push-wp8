@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="eu.endare.phonegap.WPPush"
-    version="0.0.1">
+    version="1.0.0">
 
     <name>Urban Airship Push Notification Plugin for Windows Phone</name>
     
@@ -13,8 +13,6 @@
     <engines>
       <engine name="cordova" version=">=3.0.0" />
     </engines>
-
-    <dependency id="org.apache.cordova.device" url="https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git" commit="master" subdir="." />
 
     <js-module src="www/WPPush.js" name="WPPush">
          <clobbers target="WPPush" />
