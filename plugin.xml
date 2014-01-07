@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="eu.endare.phonegap.WPPush"
+    id="eu.endare.phonegap"
     version="1.0.0">
     <name>Urban Airship Push Notification Plugin for Windows Phone</name>
     <description>Urban Airship Push Windows Phone Notification Plugin for PhoneGap/Cordova</description>
