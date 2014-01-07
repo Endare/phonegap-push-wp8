@@ -15,7 +15,8 @@
     <platform name="wp8">
         <config-file target="config.xml" parent="/*">
             <feature name="WPPush">
-                <param name="wp-package" value="PushNotificationPlugin"/>
+                <param name="wp-package" value="PushNotificationPlugin" />
+                <param name="onload" value="true" />
             </feature>
         </config-file>
 

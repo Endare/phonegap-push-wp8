@@ -7,7 +7,7 @@ var WPPush = (function() {
     };
 
     WPPush.prototype.test = function(callback) {
-        _this.call_native(callback, 'add', ['Hello World!']);
+       
     };
 
     var _this = {
