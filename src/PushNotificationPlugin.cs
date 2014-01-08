@@ -48,10 +48,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 pushChannel.ShellToastNotificationReceived += new EventHandler<NotificationEventArgs>(PushChannel_ShellToastNotificationReceived);
 
                 // Display the URI for testing purposes. Normally, the URI would be passed back to your web service at this point.
-                System.Diagnostics.Debug.WriteLine(pushChannel.ChannelUri.ToString());
-                MessageBox.Show(String.Format("Channel Uri is {0}",
-                    pushChannel.ChannelUri.ToString()));
-
+                Debug.WriteLine(pushChannel.ChannelUri.ToString());
             }
         }
 

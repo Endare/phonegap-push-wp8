@@ -19,6 +19,10 @@
             </feature>
         </config-file>
 
+        <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
+            <Capability Name="ID_CAP_PUSH_NOTIFICATION" />
+        </config-file>
+
         <source-file src="src/PushNotificationPlugin.cs" />
     </platform>
 </plugin>
