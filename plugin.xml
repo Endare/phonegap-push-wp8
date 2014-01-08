@@ -7,8 +7,8 @@
     <description>Urban Airship Push Windows Phone Notification Plugin for PhoneGap/Cordova</description>
     <license>Apache 2.0</license>
 
-    <js-module src="www/PushNotificationPlugin.js" name="PushNotificationPlugin">
-         <clobbers target="PushNotificationPlugin" />
+    <js-module src="www/PushNotification.js" name="PushNotification">
+         <clobbers target="PushNotification" />
     </js-module>
 
     <!-- Windows Phone 8 -->

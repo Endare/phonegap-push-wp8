@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Net;
+using System.Text;
 using Microsoft.Phone.Notification;
 using WPCordovaClassLib.CordovaLib;
 
@@ -62,7 +63,7 @@ namespace WPCordovaClassLib.Cordova.Commands
             Debug.WriteLine(String.Format("A push notification {0} error occurred.  {1} ({2}) {3}", e.ErrorType, e.Message, e.ErrorCode, e.ErrorAdditionalData));
         }
         #endregion
-
+        
         #region registration process
         /// <summary>
         /// This method will register the device at Urban Airship.

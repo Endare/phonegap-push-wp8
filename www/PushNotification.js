@@ -1,12 +1,12 @@
 'use strict';
 
-var PushNotificationPlugin = (function() {
+var PushNotification = (function() {
 
-    function PushNotificationPlugin() {
+    function PushNotification() {
 
     };
 
-    PushNotificationPlugin.prototype.getIncoming = function(callback) {
+    PushNotification.prototype.getIncoming = function(callback) {
         _this.call_native(callback, 'GetIncoming');
     };
 
@@ -18,7 +18,7 @@ var PushNotificationPlugin = (function() {
         }
     };
 
-    return PushNotificationPlugin;
+    return PushNotification;
 })();
 
-module.exports = new PushNotificationPlugin();
+module.exports = new PushNotification();
