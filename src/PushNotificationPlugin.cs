@@ -47,9 +47,9 @@ namespace WPCordovaClassLib.Cordova.Commands
             }
         }
 
-        public void GetIncomming() 
+        public void GetIncoming(string notused) 
         {
-            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, "{result:\"super awesome!\"}"));
+            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, "{}"));
         }
 
         #region event listeners
@@ -63,7 +63,7 @@ namespace WPCordovaClassLib.Cordova.Commands
             Debug.WriteLine(String.Format("A push notification {0} error occurred.  {1} ({2}) {3}", e.ErrorType, e.Message, e.ErrorCode, e.ErrorAdditionalData));
         }
         #endregion
-        
+
         #region registration process
         /// <summary>
         /// This method will register the device at Urban Airship.
