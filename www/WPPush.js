@@ -6,10 +6,6 @@ var WPPush = (function() {
 
     };
 
-    WPPush.prototype.test = function(callback) {
-        _this.call_native(callback, 'test', ['']);
-    };
-
     var _this = {
         call_native: function(callback, name, args) {
             args = args || [];
