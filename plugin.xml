@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="eu.endare.phonegap.WPPush"
+    id="eu.endare.phonegap.PushNotificationPlugin"
     version="1.0.0">
     <name>Urban Airship Push Notification Plugin for Windows Phone</name>
     <description>Urban Airship Push Windows Phone Notification Plugin for PhoneGap/Cordova</description>
     <license>Apache 2.0</license>
 
-    <js-module src="www/WPPush.js" name="WPPush">
-         <clobbers target="WPPush" />
+    <js-module src="www/PushNotificationPlugin.js" name="PushNotificationPlugin">
+         <clobbers target="PushNotificationPlugin" />
     </js-module>
 
     <!-- Windows Phone 8 -->
     <platform name="wp8">
         <config-file target="config.xml" parent="/*">
-            <feature name="WPPush">
+            <feature name="PushNotificationPlugin">
                 <param name="wp-package" value="PushNotificationPlugin" onload="true" />
             </feature>
         </config-file>

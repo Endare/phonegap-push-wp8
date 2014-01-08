@@ -1,19 +1,21 @@
 using System;
-using WPCordovaClassLib.Cordova;
-using WPCordovaClassLib.Cordova.Commands;
-using WPCordovaClassLib.Cordova.JSON;
-using Microsoft.Phone.Notification;
 using System.Diagnostics;
+using System.Net;
+using Microsoft.Phone.Notification;
+using WPCordovaClassLib.CordovaLib;
 
 namespace WPCordovaClassLib.Cordova.Commands
 {
     public class PushNotificationPlugin : BaseCommand
     {
         private HttpNotificationChannel pushChannel;
+        private ConfigHandler configHandler = new ConfigHandler();
+
+        private WebClient webClient = new WebClient();
 
         public override void OnInit() 
         {
-            Debug.WriteLine("Init");
+            configHandler.LoadAppPackageConfig();
 
             string channelName = "UAPush";
 
@@ -29,14 +31,10 @@ namespace WPCordovaClassLib.Cordova.Commands
                 pushChannel.ChannelUriUpdated += new EventHandler<NotificationChannelUriEventArgs>(PushChannel_ChannelUriUpdated);
                 pushChannel.ErrorOccurred += new EventHandler<NotificationChannelErrorEventArgs>(PushChannel_ErrorOccurred);
 
-                // Register for this notification only if you need to receive the notifications while your application is running.
-                pushChannel.ShellToastNotificationReceived += new EventHandler<NotificationEventArgs>(PushChannel_ShellToastNotificationReceived);
-
                 pushChannel.Open();
 
                 // Bind this new channel for toast events.
                 pushChannel.BindToShellToast();
-
             }
             else
             {
@@ -44,28 +42,52 @@ namespace WPCordovaClassLib.Cordova.Commands
                 pushChannel.ChannelUriUpdated += new EventHandler<NotificationChannelUriEventArgs>(PushChannel_ChannelUriUpdated);
                 pushChannel.ErrorOccurred += new EventHandler<NotificationChannelErrorEventArgs>(PushChannel_ErrorOccurred);
 
-                // Register for this notification only if you need to receive the notifications while your application is running.
-                pushChannel.ShellToastNotificationReceived += new EventHandler<NotificationEventArgs>(PushChannel_ShellToastNotificationReceived);
-
-                // Display the URI for testing purposes. Normally, the URI would be passed back to your web service at this point.
-                Debug.WriteLine(pushChannel.ChannelUri.ToString());
+                this.RegisterDevice(pushChannel.ChannelUri);
             }
         }
 
+        public void GetIncomming() 
+        {
+            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, "{result:\"super awesome!\"}"));
+        }
+
+        #region event listeners
         void PushChannel_ChannelUriUpdated(object sender, NotificationChannelUriEventArgs e)
         {
-
-            Debug.WriteLine(e.ChannelUri.ToString());
+            this.RegisterDevice(e.ChannelUri);
         }
 
         void PushChannel_ErrorOccurred(object sender, NotificationChannelErrorEventArgs e)
         {
             Debug.WriteLine(String.Format("A push notification {0} error occurred.  {1} ({2}) {3}", e.ErrorType, e.Message, e.ErrorCode, e.ErrorAdditionalData));
         }
+        #endregion
 
-        void PushChannel_ShellToastNotificationReceived(object sender, NotificationEventArgs e)
+        #region registration process
+        /// <summary>
+        /// This method will register the device at Urban Airship.
+        /// </summary>
+        /// <param name="uri">The URI of the channel</param>
+        private void RegisterDevice(Uri uri)
         {
+            string token = uri.Segments[uri.Segments.Length-1];
 
+            string registrationUri = configHandler.GetPreference("eu.endare.push.registration_uri");
+            string key = configHandler.GetPreference("eu.endare.push.app_key");
+            string secret = configHandler.GetPreference("eu.endare.push.app_secret");
+
+            string json = "{\"platform\": \"Windows Phone 8\", \"token\": \"" + token + "\"}";
+
+            webClient.Headers["Authorization"] = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes(key + ":" + secret));
+            webClient.Headers["Content-Type"] = "application/json";
+            webClient.UploadStringCompleted += webClient_UploadStringCompleted;
+            webClient.UploadStringAsync(new Uri(registrationUri), "POST", json);
         }
+
+        void webClient_UploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
+        {
+            
+        }
+        #endregion
     }
 }
