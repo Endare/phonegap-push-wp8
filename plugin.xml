@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="eu.endare.phonegap.PushNotificationPlugin"
     version="1.0.0">
-    <name>Urban Airship Push Notification Plugin for Windows Phone</name>
-    <description>Urban Airship Push Windows Phone Notification Plugin for PhoneGap/Cordova</description>
-    <license>Apache 2.0</license>
+    <name>Push Notification Plugin for Windows Phone</name>
+    <description>Windows Phone Push Notification Plugin for PhoneGap/Cordova</description>
+    <license>MIT</license>
 
     <js-module src="www/PushNotification.js" name="PushNotification">
          <clobbers target="PushNotification" />
